@@ -27,4 +27,31 @@ function trelloGetCardDescription($id)
   return $data_resp->desc;
 }
 
+function trelloGetPlaylists($boardId)
+{
+  $json_resp = curlCall("https://api.trello.com/1/boards/".$boardId."?lists=open&list_fields=name&fields=name,desc&key=99dd423e0fd7293fe3ac28fecf7308a2");
+  $data_resp = json_decode($json_resp);
+
+  $lists = $data_resp->lists;
+  $returnLists;
+  foreach ($lists as $list) {
+    $returnLists[$list->id] = $list->name;
+  }
+
+  return $returnLists;
+}
+
+function trelloGetPlaylist($playlistId)
+{
+  $json_resp = curlCall("https://api.trello.com/1/lists/".$playlistId."?cards=open&card_fields=name,shortLink&key=99dd423e0fd7293fe3ac28fecf7308a2");
+  $data_resp = json_decode($json_resp);
+  $songs = $data_resp->cards;
+  $returnSongs;
+  foreach ($songs as $song) {
+    $returnSongs[$song->shortLink] = $song->name;
+  }
+  //return $songs;
+  return $returnSongs;
+}
+
 ?>

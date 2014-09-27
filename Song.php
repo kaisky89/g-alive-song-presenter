@@ -26,9 +26,12 @@ class Song
     $returnString  = "<section><p>";
     
     $desc = buildSections($this->desc);
-    $desc = buildParagraphs($desc);
-    $desc = buildBreakLines($desc);
-    $desc = buildBold($desc);
+
+    // Das hier könnte man alles mit einem Markdown Parser realisieren //
+    $desc = buildParagraphs($desc);                                    //
+    $desc = buildBreakLines($desc);                                    //
+    $desc = buildBold($desc);                                          //
+    /////////////////////////////////////////////////////////////////////
     
     $returnString .= $desc;
 
