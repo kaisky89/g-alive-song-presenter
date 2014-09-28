@@ -3,7 +3,7 @@
   include_once 'Trello.php';
   include_once 'Song.php';
 
-  revealStart(); 
+  revealStart("GA Songlist: ".trelloGetPlaylistName($_GET[id])); 
 ?>
 
 <?php

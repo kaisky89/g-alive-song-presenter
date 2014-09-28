@@ -26,6 +26,13 @@
       ```
     </script>
   </section>
+  <section data-markdown>
+    <script type="text/template">
+      ```
+      <?php var_dump(trelloGetPlaylistName("5418c9a6ecfdc2e5a18c3860")); ?>
+      ```
+    </script>
+  </section>
 </section>
 <section data-markdown>
   <script type="text/template">

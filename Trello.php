@@ -54,4 +54,12 @@ function trelloGetPlaylist($playlistId)
   return $returnSongs;
 }
 
+function trelloGetPlaylistName($playlistId)
+{
+  $json_resp = curlCall("https://api.trello.com/1/lists/".$playlistId."?key=99dd423e0fd7293fe3ac28fecf7308a2");
+  $data_resp = json_decode($json_resp);
+  $name = $data_resp->name;
+  return $name;
+}
+
 ?>

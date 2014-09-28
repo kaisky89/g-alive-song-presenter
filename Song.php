@@ -23,19 +23,21 @@ class Song
 
   public function inHTML()
   {
-    $returnString  = "<section><p>";
+    $returnString  = '<section data-markdown><script type="text/template">';
     
     $desc = buildSections($this->desc);
+    $desc = buildBreakLines($desc);
 
-    // Das hier könnte man alles mit einem Markdown Parser realisieren //
-    $desc = buildParagraphs($desc);                                    //
-    $desc = buildBreakLines($desc);                                    //
-    $desc = buildBold($desc);                                          //
-    /////////////////////////////////////////////////////////////////////
-    
+
+    //// Das hier könnte man alles mit einem Markdown Parser realisieren //
+    //$desc = buildParagraphs($desc);                                    //
+    //$desc = buildBreakLines($desc);                                    //
+    //$desc = buildBold($desc);                                          //
+    ///////////////////////////////////////////////////////////////////////
+
     $returnString .= $desc;
 
-    $returnString .= "</p></section>";
+    $returnString .= "</script></section>";
     return $returnString;
   }
 }
@@ -43,7 +45,7 @@ class Song
 function buildBreakLines($text)
 {
   $pattern = "=\n=";
-  $replace = "<br />";
+  $replace = "  \n";
 
   $returnString = preg_replace($pattern, $replace, $text);
   return $returnString;
@@ -52,7 +54,7 @@ function buildBreakLines($text)
 function buildSections($text)
 {
   $pattern = "=\-\-[\-]+=";
-  $replace = "</p></section><section><p>";
+  $replace = '</script></section><section data-markdown><script type="text/template">';
 
   $returnString = preg_replace($pattern, $replace, $text);
   return $returnString;
