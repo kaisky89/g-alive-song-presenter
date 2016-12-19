@@ -1,23 +1,23 @@
-<?php 
+<?php
   include_once 'reveal.php';
   include_once 'Trello.php';
   include_once 'Song.php';
 
-  revealStart("GA Songlist: ".trelloGetPlaylistName($_GET[id])); 
+  revealStart("GA Songlist: ".trelloGetPlaylistName($_GET["id"])); 
 ?>
 
 <?php
   // get the playlist data
-  $playlistId = $_GET[id];
+  $playlistId = $_GET["id"];
   $playlist = trelloGetPlaylist($playlistId);
   $songs;
   foreach ($playlist as $id => $name) {
     $songs[$name] = new Song($id);
   }
-  
+
   // iterate over the songs
   foreach ($songs as $name => $song)
-  { 
+  {
 ?>
     <section>
       <section data-markdown>

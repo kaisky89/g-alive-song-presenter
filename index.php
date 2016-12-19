@@ -1,8 +1,8 @@
-<?php 
+<?php
   include_once 'reveal.php';
   include_once 'Trello.php';
 
-  revealStart(); 
+  revealStart();
 ?>
 <section>
   <section data-markdown>
@@ -38,7 +38,7 @@
   <script type="text/template">
     ## Playlisten
 
-    <?php $playlists = trelloGetPlaylists("qebfXdtx");
+    <?php $playlists = trelloGetPlaylists("ZHjuYuwy");
     foreach ($playlists as $id => $name) {
       echo "- [".$name."](playlist.php?id=".$id.")\n";
     }
